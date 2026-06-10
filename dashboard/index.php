@@ -381,7 +381,7 @@ if(!isset($_SESSION['is_logged_in'])) {
                     <svg class="bi" aria-hidden="true">
                       <use xlink:href="#puzzle"></use>
                     </svg>
-                    Integrations
+                    daftar user
                   </a>
                 </li>
               </ul>
