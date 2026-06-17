@@ -14,9 +14,11 @@ if ($result && $result->num_rows > 0) {
 }
 ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-<h2>Daftar User</h2>
+<h1>Daftar User</h1>
+<hr />
+<a href="index.php?halaman=tambah_user_form.php" class="btn btn-primary mb-3">Tambah User</a>
           <div class="table-responsive small">
-            <table class="table table-striped table-sm">
+            <table class="table table-striped table-sm"> 
               <thead>
                 <tr>
                   <th scope="col">ID</th>
@@ -30,13 +32,13 @@ if ($result && $result->num_rows > 0) {
               <?php 
               foreach ($daftar_users as $user) {
                 ?>
-                <tr>
+                <tr> 
                   <td><?= $user['id'] ?></td>
                   <td><?= $user['username'] ?></td>
                   <td><?= $user['email'] ?></td>
                   <td><?= $user['asal'] ?></td>
                   <td>
-                    delete | edit
+                   <a href="delete_user.php?id=<?= $user['id'] ?>"> delete</a> | edit 
               </td>
               </tr>
                  <?php

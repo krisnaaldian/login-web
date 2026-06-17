@@ -52,5 +52,10 @@ class Users
 
         
     }
+    public function hapus($id){
+        $sql = "DELETE FROM $this->table WHERE id = " . $id;
+        $result = $this->conn->query($sql);
+        return $result;
+    }
 }
 ?>
