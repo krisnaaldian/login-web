@@ -11,7 +11,7 @@ class Users
         $this->conn = $conn;
     }
 
-    // REGISTER
+    
     public function create($username, $email, $asal, $password)
     {
         $sql = "INSERT INTO $this->table (username, email, asal, password)
@@ -24,7 +24,7 @@ class Users
         }
     }
 
-    // LOGIN
+   
     public function login($username, $password)
     {
         $sql = "SELECT * FROM $this->table
@@ -34,6 +34,8 @@ class Users
         $result = $this->conn->query($sql);
 
         if ($result && $result->num_rows > 0) {
+            $sql_update = "UPDATE $this->table SET login_count = login_count + 1 WHERE username = '$username'";
+            $this->conn->query($sql_update);
             return true;
         }
 
@@ -57,17 +59,18 @@ class Users
         $result = $this->conn->query($sql);
         return $result;
     }
-    public function ambilUserDariId($id){
-        $sql = "SELECT * FROM $this->table WHERE id = " . $id;
+    public function ambilUserDariid($id){
+        $sql = "SELECT * FROM $this->table WHERE id = " . $id;  
         $result = $this->conn->query($sql);
-            return $result->fetch_assoc();
-        }
+        return $result->fetch_assoc();
+    }
     public function update($id, $username, $email, $asal, $password){
         $sql = "UPDATE $this->table SET 
-        username='" . $username . "', email='" . $email . "', 
-        asal='" . $asal . "', 
-        password='" . $password . "' WHERE id = " . $id;
+        username='$username', email='$email', asal='$asal', 
+        password='$password' WHERE id = " . $id;
         $this->conn->query($sql);
     }
+
 }
+
 ?>
